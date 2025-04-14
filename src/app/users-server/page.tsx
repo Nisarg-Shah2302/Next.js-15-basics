@@ -1,3 +1,6 @@
+import { resolve } from "path";
+import { auth, currentUser } from "@clerk/nextjs/server";
+
 type User = {
     id: number;
     name: string;
@@ -7,6 +10,11 @@ type User = {
 }
 
 export default async function UsersServer() {
+    const authObj = await auth();
+    console.log("🚀 ~ UsersServer ~ authObj:", authObj)
+    const currentUserObj = await currentUser();
+    console.log("🚀 ~ UsersServer ~ currentUserObj:", currentUserObj)
+
     const response = await fetch(
         "https://jsonplaceholder.typicode.com/users"
     );
