@@ -1,4 +1,3 @@
-import { resolve } from "path";
 import { auth, currentUser } from "@clerk/nextjs/server";
 
 type User = {

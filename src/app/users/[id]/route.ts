@@ -1,10 +1,10 @@
-import { users } from "../route";
+import { users, User } from "../data";
 
 export async function GET(
     _request: Request,
-    { params }: { params : { id : string } }
-) {
+    { params }: { params: Promise<{ id: string }> }
+): Promise<Response> {
     const { id } = await params;
-    const user = users.find((user) => user.id === parseInt(id))
+    const user: User | undefined = users.find((user) => user.id === parseInt(id));
     return Response.json(user);
 }
